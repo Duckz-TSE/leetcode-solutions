@@ -1,35 +1,38 @@
 # Contains Duplicate
 
-**Link:** https://neetcode.io/problems/duplicate-integer
-**Độ khó:** Easy
-**Pattern:** Hash Set
+**Link:** https://neetcode.io/problems/duplicate-integer | **Difficulty:** Easy
 
-## Đề bài
+## Problem
 
-Cho một mảng số nguyên `nums`. Trả về `True` nếu có bất kỳ số nào xuất hiện nhiều hơn một lần, ngược lại trả về `False`.
+Given an integer array `nums`, return `true` if any value appears more than once in the array, otherwise return `false`.
 
-Ví dụ:
-- `nums = [1, 2, 3, 3]` → `True` (số 3 xuất hiện 2 lần)
-- `nums = [1, 2, 3, 4]` → `False` (không số nào lặp lại)
+**Example 1:**
+```
+Input: nums = [1, 2, 3, 3]
+Output: true
+```
 
-## Cách tư duy
+**Example 2:**
+```
+Input: nums = [1, 2, 3, 4]
+Output: false
+```
 
-Câu hỏi cốt lõi với mỗi số là: **"số này đã từng xuất hiện chưa?"**
+## Solution
 
-- **Cách ngây thơ (brute force):** với mỗi số, đi so sánh nó với tất cả số còn lại. Hai vòng lặp lồng nhau → O(n²), chậm khi mảng lớn.
-- **Cách tốt hơn:** dùng một `set` để nhớ những số đã gặp. Set kiểm tra "đã có chưa" gần như tức thời — O(1). Nhờ vậy chỉ cần duyệt mảng *một lần*.
+This is a problem about finding duplicate values in an array. The straightforward way to solve it would be to create a nested loop with two loops, comparing each number against every other one. But if we do that, the time/space complexity won't be optimal, so we need a different approach — and that's where a hash map comes in.
 
-> **Pattern cần nhớ:** dùng hash set để ghi nhớ những thứ đã thấy → phát hiện trùng lặp trong một lần duyệt. Pattern này quay lại trong rất nhiều bài khác.
+In a nutshell, a hash map works differently from a normal list. When you look for a value in a normal list, it has to check every slot one by one. But with a hash map, it takes the value you're searching for, runs it through a hash function to turn it into an address, and jumps straight to that location to check whether the value is there.
 
-## Các bước
+With that idea, we can solve this problem by creating an empty set (`seen = set()`), then using a for loop to put each value into the hash map. During that process, before adding a value, we use an `if` statement to check whether the value about to be added is already in the hash map — using `if num in seen`. If it is, we immediately return `true`. If not, we keep adding the values from the array into the hash map until we run out, and then return `false`.
 
-1. Tạo một set rỗng `seen` để lưu các số đã gặp.
-2. Duyệt qua từng số `num` trong mảng:
-   - Nếu `num` đã có trong `seen` → tìm thấy trùng → trả về `True`.
-   - Nếu chưa → thêm `num` vào `seen`, đi tiếp.
-3. Duyệt hết mảng mà không gặp trùng → trả về `False`.
-
-## Độ phức tạp
-
-- **Thời gian:** O(n) — duyệt mảng đúng một lần, mỗi thao tác kiểm tra/thêm vào set là O(1).
-- **Bộ nhớ:** O(n) — trong trường hợp xấu nhất (không có số trùng), set chứa cả n phần tử.
+```python
+class Solution:
+    def hasDuplicate(self, nums: List[int]) -> bool:
+        seen = set()
+        for num in nums:
+            if num in seen:
+                return True
+            seen.add(num)
+        return False
+```
