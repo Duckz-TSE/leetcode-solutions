@@ -20,11 +20,11 @@ Output: false
 
 ## Solution
 
-This is a problem about finding duplicate values in an array. The straightforward way to solve it would be to create a nested loop with two loops, comparing each number against every other one. But if we do that, the time/space complexity won't be optimal, so we need a different approach — and that's where a hash map comes in.
+This is a problem about finding duplicate values in an array. The straightforward way to solve it would be to create a nested loop with two loops, comparing each number against every other one. But if we do that, the time/space complexity won't be optimal, so we need a different approach — and that's where a hash set comes in.
 
-In a nutshell, a hash map works differently from a normal list. When you look for a value in a normal list, it has to check every slot one by one. But with a hash map, it takes the value you're searching for, runs it through a hash function to turn it into an address, and jumps straight to that location to check whether the value is there.
+In a nutshell, a hash set works differently from a normal list. When you look for a value in a normal list, it has to check every slot one by one. But with a hash set, it takes the value you're searching for, runs it through a hash function to turn it into an address, and jumps straight to that location to check whether the value is there.
 
-With that idea, we can solve this problem by creating an empty set (`seen = set()`), then using a for loop to put each value into the hash map. During that process, before adding a value, we use an `if` statement to check whether the value about to be added is already in the hash map — using `if num in seen`. If it is, we immediately return `true`. If not, we keep adding the values from the array into the hash map until we run out, and then return `false`.
+With that idea, we can solve this problem by creating an empty set (`seen = set()`), then using a for loop to go through each value in the array. During that process, before adding a value to the set, we use an `if` statement to check whether the value is already in the set — using `if num in seen`. If it is, we immediately return `true`. If not, we add the value to the set and keep going until we run out, and then return `false`.
 
 ```python
 class Solution:
