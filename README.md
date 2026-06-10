@@ -1,6 +1,6 @@
-# NeetCode 150 — Lời giải & Giải thích
+# LeetCode 150 — Solution and Explanation
 
-Kho lời giải của mình cho [NeetCode 150](https://neetcode.io/practice), kèm giải thích chi tiết để bất kỳ ai đọc cũng hiểu được cách tư duy và tự làm lại được.
+ [NeetCode 150](https://neetcode.io/practice)
 
 Mỗi bài gồm 2 file:
 - `*.py` — code lời giải chạy được, kèm comment độ phức tạp
