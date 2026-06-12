@@ -8,7 +8,7 @@ Each problem has one `.md` file with the full write-up: problem statement, solut
 
 | Group | Solved |
 |-------|--------|
-| Arrays & Hashing | 2 / 9 |
+| Arrays & Hashing | 3 / 9 |
 
 ## Arrays & Hashing
 
@@ -16,3 +16,4 @@ Each problem has one `.md` file with the full write-up: problem statement, solut
 |---------|------------|---------|----------|
 | Contains Duplicate | Easy | Hash Set | [link](arrays_hashing/contains_duplicate.md) |
 | Valid Anagram | Easy | Hash Map | [link](arrays_hashing/valid_anagram.md) |
+| Two Sum | Easy | Hash Map | [link](arrays_hashing/two_sum.md) |
